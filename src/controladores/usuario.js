@@ -31,7 +31,7 @@ async function buscar(req, res) {
 
 
   if(mail in cache){
-    return res.json({"resposta":cache.mail})
+    return res.json(cache.mail)
   }else{
   
     // Procura na tbusuario o 1o registro que satisfaz as condições
@@ -43,7 +43,6 @@ async function buscar(req, res) {
     if (resposta.rowCount > 0) {
       // Retorna o registro no formato JSON
       cache.mail = resposta.rows[0];
-      console.log(cache)
       return res.json(resposta.rows[0]);
     } else {
       return res.json({erro:"Usuário não cadastrado"});
